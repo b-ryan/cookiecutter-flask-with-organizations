@@ -1,0 +1,87 @@
+{% raw -%}
+{% set nav_page = "settings" %}
+
+{% extends "base.html" %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/settings.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block page_title %}{{config.APP_NAME}} - Settings{% endblock %}
+
+{% block content %}
+<div class="settings">
+  <div class="card">
+    <div class="card-header">
+      Email
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <strong>Email</strong>
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col col-auto">
+              <input disabled value="{{ current_user.email }}">
+            </div>
+            <div class="col">
+              {% if not current_user.confirmed_at %}
+              <form method="POST" action="{{ url_for('users.resend_confirmation') }}">
+                <button type="submit" class="btn btn-sm btn-primary">
+                  Resend Confirmation
+                </button>
+              </form>
+              {% endif %}
+            </div>
+          </div>
+          <div>
+            {% if current_user.confirmed_at %}
+            <small class="text-success">(verified)</small>
+            {% else %}
+            <small class="text-danger">Not verified</small>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      Change Password
+    </div>
+    <div class="card-body">
+      <form method="POST" action="{{ url_for('users.change_password') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <div class="form-group row">
+          <div class="col-3">
+            {{pw_form.curr_password.label}}
+          </div>
+          <div class="col-9">
+            {{pw_form.curr_password(placeholder="Current password", class_="form-control")}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-3">
+            {{pw_form.new_password.label}}
+          </div>
+          <div class="col-9">
+            {{pw_form.new_password(placeholder="New password", class_="form-control")}}
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-3">
+            {{pw_form.verify_password.label}}
+          </div>
+          <div class="col-9">
+            {{pw_form.verify_password(placeholder="New Password (again)", class_="form-control")}}
+          </div>
+        </div>
+        <input class="btn btn-default btn-submit" type="submit" value="Change Password">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% endraw -%}

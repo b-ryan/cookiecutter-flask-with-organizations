@@ -1,0 +1,8 @@
+{
+  "project_name": "flask-app",
+  "package_name": "{{cookiecutter.project_name.replace('-','_')}}",
+  "flask_app_name": "Will Appear in the App",
+  "readme_description": "just a short intro for the readme",
+  "production_domain": "app.example.com",
+  "copyright_text": "2018 My Company"
+}

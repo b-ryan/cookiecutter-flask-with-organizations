@@ -1,0 +1,11 @@
+{% raw -%}
+{% extends "base.html" %}
+{% block content %}
+<h1>Select Organization</h1>
+{% for org in user_organizations %}
+<p>
+<a class="org-link" href="{{ request.url }}&org={{ org.id }}">{{ org.name }}</a>
+</p>
+{% endfor %}
+{% endblock %}
+{% endraw -%}

@@ -1,0 +1,23 @@
+{% raw -%}
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Invite User</h1>
+<form action="" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <div class="form-group">
+    {{form.email.label}}
+    {{form.email(placeholder="Email", class_="form-control")}}
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      {{form.is_admin(class_="form-check-input")}}
+      admin
+    </label>
+  </div>
+  <div>
+    <input class="btn btn-default btn-submit" type="submit" value="Send Invite">
+  </div>
+</form>
+{% endblock %}
+{% endraw -%}

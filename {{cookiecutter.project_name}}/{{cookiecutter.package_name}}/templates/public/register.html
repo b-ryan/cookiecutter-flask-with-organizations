@@ -1,0 +1,43 @@
+{% raw -%}
+{% extends "base.html" %}
+{% block content %}
+<div class="registration-form">
+  <h1>Begin Your Free, 14-day Trial</h1>
+  <form id="registerForm" class="form" method="POST" action="" role="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="form-group">
+      {{form.organization_name.label}}
+      {{form.organization_name(placeholder="Organization Name", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.email.label}}
+      {{form.email(placeholder="Email", class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{form.password.label}}
+      {{form.password(placeholder="Password", class_="form-control")}}
+      <small id="passwordHelpBlock" class="form-text text-muted">
+        At least 8 characters long.
+      </small>
+    </div>
+    <div class="form-group">
+      {{form.verify_password.label}}
+      {{form.verify_password(placeholder="Password (again)", class_="form-control")}}
+    </div>
+    <div class="row">
+      <div class="col">
+        <input class="btn btn-default btn-submit" type="submit" value="Register">
+      </div>
+      <div class="col col-auto">
+        <em>Already registered?</em> Click
+        <a href="{{ url_for('public.login', next=request.args.get('next')) }}">here</a> to login.
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/register.css') }}" rel="stylesheet">
+{% endblock %}
+{% endraw -%}

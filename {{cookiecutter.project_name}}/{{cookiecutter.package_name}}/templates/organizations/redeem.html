@@ -1,0 +1,23 @@
+{% raw -%}
+{% extends "base.html" %}
+
+{% block content %}
+<p>The organization <strong>{{ organization.name }}</strong> has invited you to
+join them. Do you want to accept this invitation?</p>
+<form id="redeemForm" class="form" method="POST" action="" role="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  {% if form.password %}
+  <div class="form-group">
+    {{form.password.label}}
+    {{form.password(placeholder="Password", class_="form-control")}}
+  </div>
+  <div class="form-group">
+    {{form.verify_password.label}}
+    {{form.verify_password(placeholder="Password (again)", class_="form-control")}}
+  </div>
+  {% endif %}
+  <button class="btn btn-success" name="confirm" value="yes">Let's do it</button>
+  <button class="btn btn-default" name="confirm" value="no">No, thanks</button>
+</form>
+{% endblock %}
+{% endraw -%}

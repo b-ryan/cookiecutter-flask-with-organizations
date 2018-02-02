@@ -1,0 +1,12 @@
+{% raw -%}
+{% extends "base.html" %}
+{% block page_title %}Bad Request{% endblock %}
+{% block content %}
+<div class="jumbotron">
+  <div class="text-center">
+    <h1>400</h1>
+    <p>{{ error.description }}</p>
+  </div>
+</div>
+{% endblock %}
+{% endraw -%}

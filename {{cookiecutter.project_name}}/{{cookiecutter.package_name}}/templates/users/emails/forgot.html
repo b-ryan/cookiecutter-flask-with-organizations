@@ -1,0 +1,7 @@
+{% raw -%}
+<html>
+  Please click
+  <a href="{{ url_for('users.reset_password', token=token, _external=True) }}">here</a>
+  to reset your password.
+</html>
+{% endraw -%}

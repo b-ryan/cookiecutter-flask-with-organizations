@@ -1,0 +1,34 @@
+{% raw -%}
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-4"><p>Client ID</p></div>
+  <div class="col-sm-8"><p>{{ client.client_id }}</p></div>
+</div>
+<div class="row">
+  <div class="col-sm-4"><p>Client Secret</p></div>
+  <div class="col-sm-8"><p>{{ client.client_secret }}</p></div>
+</div>
+<hr>
+<form class="form" method="POST" action="" role="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <div class="form-group">
+    {{form.name.label}}
+    {{form.name(placeholder="Application Name", class_="form-control")}}
+  </div>
+  <div class="form-group">
+    {{form.description.label}}
+    {{form.description(placeholder="Application Description", class_="form-control")}}
+  </div>
+  <div class="form-group">
+    {{form.homepage_url.label}}
+    {{form.homepage_url(placeholder="Homepage URL", class_="form-control")}}
+  </div>
+  <div class="form-group">
+    {{form.redirect_uri.label}}
+    {{form.redirect_uri(placeholder="Callback URL", class_="form-control")}}
+  </div>
+  <p><input class="btn btn-default btn-submit" type="submit" value="Update"></p>
+</form>
+{% endblock %}
+{% endraw -%}

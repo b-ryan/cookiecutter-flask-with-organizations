@@ -1,0 +1,7 @@
+{% raw -%}
+<html>
+  Please click
+  <a href="{{ url_for('users.confirm', token=token, _external=True) }}">here</a>
+  to confirm your email.
+</html>
+{% endraw -%}

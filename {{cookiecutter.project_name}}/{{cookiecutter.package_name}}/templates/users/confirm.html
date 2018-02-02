@@ -1,0 +1,12 @@
+{% raw -%}
+{% extends "base.html" %}
+{% block content %}
+{% if expired %}
+<p class="text-danger">Your confirmation link is expired.</p>
+<p>Please go to the
+  <a href="{{ url_for('users.settings') }}">settings page</a>
+  to resend the confirmation email.
+</p>
+{% endif %}
+{% endblock %}
+{% endraw -%}

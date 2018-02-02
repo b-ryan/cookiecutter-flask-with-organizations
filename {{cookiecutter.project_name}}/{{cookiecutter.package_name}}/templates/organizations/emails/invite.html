@@ -1,0 +1,13 @@
+{% raw -%}
+<html>
+  <p>Hello!</p>
+  <p>You have been invited to join a {{config.APP_NAME}} organization by
+  {{ current_user.email }}.</p>
+  <p>Please click
+  <a href="{{ url_for('orgs.redeem',
+                      organization_id=organization.id,
+                      code=code,
+                      _external=True) }}">here</a>
+  to accept or decline this invitation.</p>
+</html>
+{% endraw -%}

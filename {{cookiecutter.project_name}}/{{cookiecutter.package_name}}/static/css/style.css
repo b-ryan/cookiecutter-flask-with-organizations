@@ -1,0 +1,54 @@
+html {
+    height: 100%;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    padding-top: 3.5rem; /* to account for fixed navbar */
+    font-family: 'Open Sans', sans-serif;
+}
+
+.gravatar {
+    border-radius: 50%;
+}
+
+.main {
+    flex: 1;
+    margin-top: 1em;
+}
+
+#statementsAceEditor {
+    width: 100%;
+    min-height: 200px;
+}
+
+.navbar {
+    font-size: 1.15em;
+    padding: 10px;
+    border: 0px;
+}
+
+footer {
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+footer a {
+    margin: 0 5px;
+}
+
+.help-link {
+    text-align: right;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 3rem;
+}
+
+.instructions {
+    line-height: 1.5em;
+}
+.instructions h1 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,96 @@
+{% raw -%}
+{% extends "base.html" %}
+
+{% set sidebar_page = "users" %}
+
+{% block page_title %}{{config.APP_NAME}} - Users{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col col-auto">
+    <a class="btn btn-primary pull-right"
+      href="{{ url_for('orgs.invite', organization_id=organization.id) }}">
+      Invite User</a>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Status</th>
+    <th></th>
+  </thead>
+  <tbody>
+    {% for membership in memberships %}
+    <tr {% if not membership.active %}class="text-muted"{% endif %}>
+      <td>{{ membership.user.email }}</td>
+      <td>{{ membership.role }}</td>
+      <td>
+        {% if membership.active %}
+        Active
+        {% elif membership.is_pending_redemption() %}
+        Invited
+        {% else %}
+        Inactive
+        {% endif %}
+      </td>
+      <td>
+        {% if membership.active %}
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+            Actions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item"
+               href="{{ url_for('databases.list_grants',
+                                organization_id=organization.id,
+                                membership_id=membership.id) }}">
+              View Grants
+            </a>
+            <button class="dropdown-item deactivor"
+                    data-membership_id="{{ membership.id }}"
+                    data-email="{{ membership.user.email }}">
+              Deactivate User
+            </button>
+          </div>
+        </div>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<form id="deactivateForm" method="POST"
+  action="{{ url_for('orgs.deactivate', organization_id=organization.id) }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  <input type="hidden" name="membership_id" value=""/>
+</form>
+{% endblock %}
+
+{% block js %}
+<script>
+$(function() {
+  $(".deactivor").click(function(event_) {
+    var button = event_.target;
+    var membershipId = $(button).data("membership_id");
+    var email = $(button).data("email");
+    var prompt = "Are you sure you wish to deactivate " + email + "?";
+    prompt += " Doing so will drop this user from every database they were given access to.";
+    if (confirm(prompt)) {
+      var form = $("#deactivateForm");
+      var field = form.find("[name='membership_id']");
+      field.val(membershipId);
+      form.submit();
+    }
+  })
+})
+</script>
+{% endblock %}
+{% endraw -%}
