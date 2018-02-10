@@ -1,8 +1,7 @@
 {% raw -%}
 {% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12" id="flashes">
     {% for category, message in messages %}
     <div class="alert alert-{{ category }}">
       <a class="close" title="Close" href="#" data-dismiss="alert">&times;</a>
@@ -11,6 +10,5 @@
     {% endfor %}
   </div>
 </div>
-{% endif %}
 {% endwith %}
 {% endraw -%}

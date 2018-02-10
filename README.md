@@ -1,19 +1,18 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [Cookiecutter Flask With Organizations](#cookiecutter-flask-with-organizations)
-  - [Usage](#usage)
-  - [Features](#features)
-  - [OAuth Support](#oauth-support)
-  - [Admin Panel](#admin-panel)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Cookiecutter Flask With Organizations
 
 A(nother) Flask template for
 [cookiecutter](https://github.com/audreyr/cookiecutter)
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Usage](#usage)
+- [Features](#features)
+- [OAuth Support](#oauth-support)
+- [Admin Panel](#admin-panel)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 The "With Organizations" portion of the title refers to the fact that this
 project is meant for apps that do not just have users, but those users belong
@@ -30,7 +29,7 @@ your needs.
 
 ```
 $ pip install cookiecutter
-$ cookiecutter https://github.com/b-ryan/cookiecutter-flask-orgs.git
+$ cookiecutter https://github.com/b-ryan/cookiecutter-flask-with-organizations
 ```
 
 ## Features
